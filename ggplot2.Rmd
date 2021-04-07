@@ -1,5 +1,5 @@
 ---
-title: "R for Data Science---1.ggplot2"
+title: ggplot2"
 output: html_document
 ---
 

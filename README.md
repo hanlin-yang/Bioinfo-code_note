@@ -7,3 +7,4 @@ WebSite:
 4. Swiss Institute of Bioinformatics https://www.sib.swiss/
 R
 1. 数据科学中的R语言 https://bookdown.org/wangminjie/R4DS/
+R速查表：https://www.rstudio.com/resources/cheatsheets/

@@ -1,0 +1,64 @@
+---
+title: ggplot2"
+output: html_document
+---
+
+# ggplot2
+# mpg {ggplot2} : Fuel economy data from 1999 to 2008 for 38 popular models of cars
+```{r}
+library(tidyverse)
+mpg
+ggplot(data = mpg) + geom_point(mapping = aes(x = displ, y = hwy))
+# ggplot(data = mpg) + geom_point(mapping = aes(x = hwy, y = displ))
+ggplot(data = mpg) + geom_point(mapping = aes(x = cty, y = displ))
+Sys.setenv(LANGUAGE = "en") #错误用英文提示
+ggplot(data = mpg)
+mpg
+?mpg
+ggplot(data = mpg) + geom_point(mapping = aes(x = displ, y = hwy))
+ggplot(data = mpg) + geom_point(mapping = aes(x = class, y = drv))    # chr数据类型画图无意义
+ggplot(data = mpg) + geom_point(mapping = aes(x = displ, y = hwy, color = class))
+ggplot(data = mpg) + geom_point(mapping = aes(x = displ, y = hwy, colour = class))  # color = colour
+ggplot(data = mpg) + geom_point(mapping = aes(x = displ, y = hwy, size = class))  # Using size for a discrete variable is not advised. 
+ggplot(data = mpg) + geom_point(mapping = aes(x = displ, y = hwy, alpha = class))  #Using alpha for a discrete variable is not advised. 
+ggplot(data = mpg) + geom_point(mapping = aes(x = displ, y = hwy, shape = class)) #shape <= 6
+ggplot(data = mpg) + geom_point(mapping = aes(x = displ, y = hwy), color = 677)  #color="颜色"或数值代表的颜色，如下
+ggplot(data = mpg) + geom_point(mapping = aes(x = displ, y = hwy), color = "blue")
+ggplot(data = mpg) + geom_point(mapping = aes(x = displ, y = hwy,), size = 2, color = "red", shape = 1)
+ggplot(data = mpg) + geom_point(mapping = aes(x = displ, y = hwy,), fill = "red", size = 2, shape = 24) #shape数值标识R的25种内置形状，fill&color边界颜色/填充颜色（空心形状/实心形状/填充形状）
+rlang::last_error()  #To see where the error occurred
+```
+# 分面
+```{r}
+ggplot(data = mpg) + geom_point(mapping = aes(x = displ, y = hwy)) + facet_wrap(~ class, nrow = 2)  # 一个变量多个级别；~+变量，公式（选取分面公共原因），facet_wrap(离散型变量)
+ggplot(data = mpg) + geom_point(mapping = aes(x = displ, y = hwy)) + facet_grid(drv ~ cyl)  #两个变量分面，~隔开
+ggplot(data = mpg) + geom_point(mapping = aes(x = displ, y = hwy)) + facet_grid(.~ cyl)  # .代替行or列维度
+```
+
+```{r}
+p <- ggplot(mpg, aes(displ, cty)) +geom_point()
+p + facet_grid(drv ~ cyl)
+```
+
+```{r}
+library(tidyverse)
+ggplot(data = mpg) + geom_point(mapping = aes(x = displ, y = hwy))
+ggplot(data = mpg) + geom_smooth(mapping = aes(x = displ, y = hwy))
+ggplot(data = mpg) + geom_smooth(mapping = aes(x = displ, y = hwy, linetype = drv))
+
+```
+
+ggplot2扩展包： https://www.ggplot2-exts.org
+ggplot2速查表：http://rstudio.com/cheatsheets
+
+```{r}
+ggplot(data = mpg) + geom_smooth(mapping = aes(x = displ, y = hwy))
+ggplot(data = mpg) + geom_smooth(mapping = aes(x = displ, y = hwy, group = drv))
+ggplot(data = mpg) + geom_smooth(mapping = aes(x = displ, y = hwy, color = drv), show.legend = FALSE)
+ggplot(data = mpg) + geom_point(mapping = aes(x = displ, y = hwy)) + geom_smooth(mapping = aes(x = displ, y = hwy)) 
+ggplot(data = mpg, mapping = aes(x = displ, y = hwy))+ geom_point() +geom_smooth()
+ggplot(data = mpg, mapping =aes(x = displ, y = hwy)) + geom_point(mapping = aes(color = class)) + geom_smooth()
+ggplot(mpg, aes(displ, hwy)) + geom_point(aes(color = class)) +geom_smooth()
+ggplot(data = mpg, mapping = aes(x = displ, y = hwy)) + geom_point(mapping = aes(color = class)) + geom_smooth(data = filter(mpg, class == "subcompact"), se = FALSE)
+
+```

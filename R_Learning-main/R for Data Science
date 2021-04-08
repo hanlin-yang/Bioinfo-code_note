@@ -1,0 +1,11 @@
+#####前言
+R CRAN、Rstudio
+help()、?、？？
+install.packafes("")
+library()
+ctrl + L 、rm(list = ls())
+dplyr :: mutate() | nycflights12 ::flights
+Sys.setenv(LANGUAGE = "en")
+tidyverse
+  tidyverse_update()
+Blog: R-bloggers; Twitter: #rstats

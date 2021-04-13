@@ -3,6 +3,7 @@ title: ggplot2"
 output: html_document
 ---
 # ggplot2基于图形语法，使用相同的组件（数据集、坐标系统和表示数据点的集合对象）来构建图片
+
 # 模板
 > ggplot(data = <DATA>) +<GEOM_FUNCTIOIN>(mapping = aes(<MAPPING), stat = <STAT>, posotion = <POSITION>) + <COORDINATE_FUNCTION> + <FACET_FUNCTION> + <SCALE_FUNCTION> + <THEME_FUNCTION>
 
